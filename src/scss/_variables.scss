@@ -1,0 +1,48 @@
+// Colors
+
+$main-color: #0096da;
+$hover-color: #0081bc;
+$active-color: #015d87;
+$inactive-color: #8288a2;
+$disabled-color: #b8bed8;
+$disabled-bg: #edeeef;
+$text-color: #3f3f3f;
+$title-color: #000;
+$muted-color: $disabled-color;
+$invalid-color: #ff1e38;
+
+// Text
+
+$text-font-weight: 500;
+$text-font-size: 14px;
+$text-line-height: 1.85;
+$text-font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$text-font: $text-font-weight #{$text-font-size}/#{$text-line-height} $text-font-family;
+
+$title-font-weight: 500;
+$title-font-size: 32px;
+$title-font-size-phone: 24px;
+$title-line-height: 1;
+$title-font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$title-font: $title-font-weight #{$title-font-size}/#{$title-line-height} $title-font-family;
+
+$strong-weight: 700;
+
+// Sizes
+
+$section-padding: 40px;
+$inner-padding: 102px;
+$inner-padding-phone: 16px;
+$min-width: 320px;
+$max-width: 1200px;
+
+// Easing
+
+$easing: cubic-bezier(.23, 1, .32, 1);
+
+// Breakpoints & grid
+
+$breakpoints: (phone: 320px, tablet: 768px, desktop: 1024px);
+$columns: 12;
+$row-gutter: 20px;
+$col-gutter: 16px;

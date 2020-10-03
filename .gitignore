@@ -1,0 +1,6 @@
+.idea/
+.vscode/
+*.sublime-*
+sftp-config.json
+node_modules/
+npm-debug.log

@@ -1,0 +1,223 @@
+/* Button */
+
+.k-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 208px;
+  font-size: 16px;
+  padding: 20px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: $main-color;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: $hover-color;
+  }
+  &:active {
+    background-color: $active-color;
+  }
+  &[disabled] {
+    background-color: $disabled-bg;
+    color: $disabled-color;
+    cursor: not-allowed;
+  }
+}
+
+/* Field */
+
+.k-field {
+  @include vmargin(35px);
+}
+.k-field__error {
+  @include vmargin(3px);
+  font-size: 12px;
+  color: $invalid-color;
+}
+
+/* Label */
+
+.k-label {
+  @include vmargin(5px);
+  display: block;
+}
+
+/* Input */
+
+.k-input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 19px 20px;
+  border: 1px solid #dadef0;
+  border-radius: 4px;
+  color: #000;
+  background-color: #fff;
+
+  &::placeholder {
+    color: $disabled-color;
+  }
+
+  &:hover {
+    border-color: #c3c9db;
+  }
+  &:focus {
+    outline: none;
+    border-color: $inactive-color;
+  }
+  &[disabled] {
+    border-color: $disabled-bg;
+    background-color: $disabled-bg;
+  }
+
+  .k-field--invalid & {
+    border-color: $invalid-color;
+  }
+}
+
+/* Textarea */
+
+.k-input--text {
+  height: 110px;
+  resize: vertical;
+}
+
+/* Radio & Checkbox */
+
+.k-radio,
+.k-checkbox {
+  @include vmargin(16px);
+  position: relative;
+}
+
+/* Radio & Checkbox label */
+
+.k-checkbox__label,
+.k-radio__label {
+  position: relative;
+  display: block;
+  padding-left: 34px;
+  font-size: 14px;
+  color: #000;
+
+  &::before {
+    @include absolute-block(20px, 20px);
+    left: 0;
+    top: 0;
+    border: 1px solid #dadef0;
+    background-color: #fff;
+    margin-top: 2px;
+  }
+  &::after {
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      border-color: $main-color;
+    }
+  }
+
+  a {
+    color: $main-color;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Radio & Checkbox input */
+
+.k-checkbox__input,
+.k-radio__input {
+  appearance: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+
+  &:focus {
+    outline: none;
+
+    & + .k-checkbox__label,
+    & + .k-radio__label {
+      &::before {
+        border-color: $main-color;
+      }
+    }
+  }
+
+  &:checked + .k-checkbox__label,
+  &:checked + .k-radio__label {
+    &::before {
+      border-color: $main-color;
+    }
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &[disabled] + .k-checkbox__label,
+  &[disabled] + .k-radio__label {
+    color: $disabled-color;
+
+    &::before {
+      background-color: $disabled-bg;
+      border-color: $disabled-bg;
+    }
+  }
+}
+
+/* Radio label */
+
+.k-radio__label {
+  &::before {
+    border-radius: 50%;
+    margin-top: 2px;
+  }
+  &::after {
+    @include absolute-block(6px,6px);
+    left: 7px;
+    top: 7px;
+    background-color: $main-color;
+    border-radius: 50%;
+    margin-top: 2px;
+  }
+}
+
+/* Checkbox label */
+
+.k-checkbox__label {
+  &::after {
+    @include absolute-block(5px,9px);
+    left: 5px;
+    top: 2px;
+    transform: rotate(30deg);
+    border: 2px solid $main-color;
+    border-left: none;
+    border-top: none;
+    margin-top: 2px;
+  }
+}
+
+/* Button footer */
+
+.button-footer {
+  text-align: right;
+
+  @include media("<tablet") {
+    padding-bottom: 15px;
+  }
+  @include media(">=tablet") {
+    padding-bottom: 10px;
+  }
+}

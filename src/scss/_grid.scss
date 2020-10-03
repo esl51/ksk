@@ -1,0 +1,28 @@
+/* Row */
+
+.row {
+  margin: (-$row-gutter / 2) (-$col-gutter/2);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Column */
+
+.col {
+  padding: ($row-gutter / 2) ($col-gutter / 2);
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* Column variants */
+
+@each $bp-name, $bp-size in $breakpoints {
+  @for $column from 1 through $columns {
+    @include media(">=" + $bp-name) {
+      .col--#{str-slice($bp-name, 0, 1)}-#{$column} {
+        flex-basis: percentage($column / $columns);
+        max-width: percentage($column / $columns);
+      }
+    }
+  }
+}

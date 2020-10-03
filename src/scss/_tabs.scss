@@ -1,0 +1,161 @@
+// Variables
+
+$arrow-inactive: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7"><path fill="' + str-replace(#{$inactive-color}, '#', '%23') + '" d="M9.9 2L6.413 5.484 5 6.898 3.586 5.485.1 1.999 1.515.585 5 4.07 8.485.585z"/></svg>');
+
+$arrow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7"><path fill="' + str-replace(#{$main-color}, '#', '%23') + '" d="M9.9 2L6.413 5.484 5 6.898 3.586 5.485.1 1.999 1.515.585 5 4.07 8.485.585z"/></svg>');
+
+/* Tabs */
+
+.k-tabs {
+  @include media(">=tablet") {
+    position: relative;
+  }
+}
+
+/* Tabs list */
+
+.k-tabs__list {
+  list-style-type: none;
+  padding: 0;
+
+  @include media("<tablet") {
+    border-top: 1px solid #dadef0;
+  }
+  @include media(">=tablet") {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -3px;
+  }
+}
+
+/* Tab */
+
+.k-tab {
+  @include media(">=tablet") {
+    margin: 1px 3px;
+
+    @for $i from 1 through 100 {
+      &:nth-child(#{$i}) {
+        z-index: 101 - $i;
+      }
+    }
+  }
+}
+
+/* Active tab */
+
+.k-tab.k-tab--active {
+  @include media(">=tablet") {
+    z-index: 102;
+  }
+}
+
+/* Tab toggle */
+
+.k-tab__toggle {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: $inactive-color;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 100%;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: $main-color;
+  }
+
+  .k-tab--active & {
+    color: $main-color;
+  }
+
+  @include media("<tablet") {
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    padding: 19px 36px 19px 16px;
+    border-bottom: 1px solid #dadef0;
+
+    &::before {
+      background-image: $arrow-inactive;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      right: 0;
+      top: 0;
+      width: 36px;
+      transition: transform .3s $easing;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        background-image: $arrow;
+      }
+    }
+
+    .k-tab--active & {
+      &::before {
+        background-image: $arrow;
+        transform: rotate(180deg);
+      }
+    }
+  }
+  @include media(">=tablet") {
+    padding: 27px 29px 21px 32px;
+    background-color: #edeeef;
+    border-top-left-radius: 5px;
+    z-index: 1;
+
+    &::before {
+      background-color: #edeeef;
+      width: 40px;
+      left: 100%;
+      top: 0;
+      transform-origin: left bottom;
+      transform: skewX(30deg);
+      border-top-right-radius: 5px;
+      box-shadow: 4px 2px 0 -2px rgba(0, 0, 0, 0.08);
+    }
+
+    .k-tab--active & {
+      background-color: #fff;
+
+      &::before {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+/* Tab body */
+
+.k-tab__body {
+  width: 100%;
+
+  @include media("<tablet") {
+    position: relative;
+    background-color: #fff;
+    padding: 20px 16px;
+    border-bottom: 1px solid #dadef0;
+  }
+  @include media(">=tablet") {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 30px 32px;
+    background-color: #fff;
+    z-index: 2;
+    margin-bottom: 2px;
+  }
+
+  .k-tab:not(.k-tab--active) & {
+    display: none;
+  }
+}
